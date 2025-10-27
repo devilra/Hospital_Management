@@ -4,6 +4,33 @@ import Slider from "react-slick";
 import About from "../AboutUs/About";
 import { useLocation } from "react-router-dom";
 
+import { FaHeartbeat, FaHospitalSymbol, FaHandsHelping } from "react-icons/fa";
+
+const fullText = (
+  <>
+    <p className="text-gray-700 leading-relaxed mb-4">
+      <span className="font-semibold text-2xl text-blue-900">
+        Touching numerous lives, through Care and Compassion,
+      </span>{" "}
+      RKP Multi-Speciality hospital believes in Providing Quality Healthcare at
+      your budget. We are Secondary healthcare provider who is not less in
+      Quality and treatment when compared to any corporate hospital.
+    </p>
+    <p className="text-gray-700 leading-relaxed mb-4">
+      Take a look into our facilities and amenities provided.
+      <span className=" mt-4 text-xl md:text-2xl font-extrabold text-[#D81B60] bg-yellow-100 p-2 rounded-lg shadow-md inline-block">
+        We are always ready to help you.
+      </span>
+    </p>
+    <p className="text-gray-700 leading-relaxed">
+      All your queries about Appointments, Consultation, Diagnostics, Admission
+      and Insurance is explained and guided by our Front office executive who
+      will take care of you from the moment you enter the premises till you
+      leave.
+    </p>
+  </>
+);
+
 const services = [
   {
     title: "CT SCAN",
@@ -82,14 +109,14 @@ const HeroSection = () => {
   }, [location]);
 
   return (
-    <div className="">
+    <div className="pt-24">
       <div className="hidden md:block">
         <section
-          className="relative  px-4 md:px-20 h-[800px] md:h-fit py-10 flex flex-col md:flex-row items-center justify-end gap-10 bg-cover bg-center bg-no-repeat"
+          className="relative  px-4 md:px-20 h-[800px] md:h-[500px] py-10 flex flex-col md:flex-row items-center justify-end gap-10 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage:
-              "url('https://globalscans.in/wp-content/uploads/2025/04/CT-SCAN-1.png')",
-          }}>
+            backgroundImage: "url('/banner2.webp')",
+          }}
+        >
           {/* Left Content */}
 
           {/* Right Form */}
@@ -119,7 +146,8 @@ const HeroSection = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800">
+                className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800"
+              >
                 Submit
               </button>
             </form>
@@ -161,6 +189,67 @@ const HeroSection = () => {
       </div>
 
       {/* {About Page} */}
+
+      <div className="">
+        <section className="relative w-full py-16 md:py-24 overflow-hidden bg-gray-50">
+          {/* Absolute Decorative Elements (Stylish lookக்காக) */}
+          <div className="absolute top-0 left-0 w-32 h-32 bg-blue-100 rounded-full opacity-50 transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-pink-100 rounded-full opacity-50 transform translate-x-1/2 translate-y-1/2 z-0"></div>
+
+          <div className="container mx-auto px-4 md:px-8 relative z-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center text-blue-900 mb-12">
+              RECEPTION &amp; OUR COMMITMENT
+            </h2>
+
+            {/* Main Content Grid: Text & Feature Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+              {/* 1. Left Column: Main Text Content */}
+              <div className="lg:col-span-2 bg-white p-6 md:p-10 rounded-2xl shadow-xl border-t-4 border-blue-600">
+                {fullText}
+              </div>
+
+              {/* 2. Right Column: Feature Cards (Grid 1/1) */}
+              <div className="lg:col-span-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                {/* Feature Card 1: Care & Compassion */}
+                <div className="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                  <FaHeartbeat size={32} className="text-pink-600 mb-3" />
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">
+                    Care and Compassion
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Touching lives through dedicated service and genuine
+                    empathy.
+                  </p>
+                </div>
+
+                {/* Feature Card 2: Quality Healthcare */}
+                <div className="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-blue-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                  <FaHospitalSymbol size={32} className="text-blue-600 mb-3" />
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">
+                    Quality at Your Budget
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Secondary healthcare quality that rivals any corporate
+                    standard.
+                  </p>
+                </div>
+
+                {/* Feature Card 3: Facilities Overview */}
+                <div className="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-yellow-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                  <FaHandsHelping size={32} className="text-yellow-600 mb-3" />
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">
+                    Dedicated Guidance
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Our Front office staff guides you through every step, from
+                    entry to exit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <div id="about">
         <About />

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
-import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation, Link } from "react-router-dom";
 import { IoCall } from "react-icons/io5";
-import { Link as ScrollLink, scroller } from "react-scroll";
+import { scroller } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +10,11 @@ const Navbar = () => {
   const location = useLocation();
 
   const handleAboutClick = () => {
+    // Menu-வை மூடுவது
+    setIsOpen(false);
+
     if (location.pathname !== "/") {
       navigate("/");
-      // wait for navigation to finish before scrolling
       setTimeout(() => {
         scroller.scrollTo("about", {
           smooth: true,
@@ -36,23 +38,33 @@ const Navbar = () => {
     { name: "Contact Us", path: "/contact" },
   ];
 
+  // Mobile/Tablet Menu-வில் Link-ஐ க்ளிக் செய்தால் Menu-வை மூடுவதற்கு ஒரு Helper Function
+  const handleLinkClick = (action) => {
+    setIsOpen(false);
+    if (action) {
+      action(); // About Us-க்கு மட்டும் scroll action
+    }
+  };
+
   return (
-    <nav className="flex items-center justify-between px-4 md:px-20 py-4 bg-white shadow  z-50">
+    // Fixed Navbar
+    <nav className="fixed top-0 w-full flex items-center justify-between px-4 md:px-10 lg:px-20 py-2 bg-white shadow z-50">
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <Link to="/">
-          <img src="/logo1.png" alt="RKP" className="h-20 w-[170px]" />
+        <Link to="/" onClick={() => setIsOpen(false)}>
+          <img src="/logo1.png" alt="RKP" className="h-16 w-auto md:h-20" />
         </Link>
       </div>
 
-      {/* Desktop Links */}
-      <ul className="hidden md:flex justify-between items-center gap-8 text-sm font-semibold text-blue-900">
+      {/* Desktop Links: இது இப்போ LG ஸ்கிரீன்ல (1024px) மட்டும் தான் தெரியும் */}
+      <ul className="hidden lg:flex justify-between items-center gap-8 text-sm font-semibold text-blue-900">
         {navLinks.map(({ name, path, action }) =>
           action ? (
             <button
               key={name}
               onClick={action}
-              className="md:text-lg cursor-pointer px-4 py-2 border-b-4 transition duration-500 text-blue-600 font-bold border-transparent hover:border-blue-600 bg-transparent">
+              className="lg:text-lg cursor-pointer px-2 py-2 border-b-4 transition duration-500 text-blue-600 font-bold border-transparent hover:border-blue-600 bg-transparent"
+            >
               {name}
             </button>
           ) : (
@@ -60,62 +72,78 @@ const Navbar = () => {
               to={path}
               key={name}
               className={({ isActive }) =>
-                `md:text-lg cursor-pointer px-4 py-2 border-b-4 transition duration-500 ${
+                `lg:text-lg cursor-pointer px-2 py-2 border-b-4 transition duration-500 ${
                   isActive
                     ? "text-blue-600 font-bold border-blue-600"
                     : "text-blue-600 font-bold border-transparent hover:border-blue-600"
                 }`
-              }>
+              }
+            >
               {name}
             </NavLink>
           )
         )}
       </ul>
 
-      {/* Call Button (Desktop) */}
-      <div className="hidden md:block">
-        <button className="bg-blue-900 text-white px-7 font-bold py-4 flex gap-2 justify-center items-center rounded-lg">
-          <IoCall size={20} className="text-white" /> 9384676002
-        </button>
+      {/* Right Side: Call Button (LG Only) & Menu Icon (MD and below) */}
+      <div className="flex items-center gap-4">
+        {/* Desktop Call Button: இது LG ஸ்கிரீன்ல மட்டும் தான் தெரியும் */}
+        <a href="tel:9384676002" className="hidden lg:block">
+          <button className="bg-blue-900 text-white px-5 font-bold py-3 flex gap-2 justify-center items-center rounded-lg hover:bg-blue-700 transition duration-300">
+            <IoCall size={20} className="text-white" /> 9384676002
+          </button>
+        </a>
+
+        {/* Hamburger/X Icon: இது MD (Tablet) மற்றும் அதற்கு கீழே இருக்கிற ஸ்கிரீன்ல தெரியும் */}
+        <div
+          className="lg:hidden text-3xl text-blue-900 cursor-pointer z-50" // lg:hidden use பண்ணிருக்கேன்
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <HiX /> : <HiMenu />}
+        </div>
       </div>
 
-      {/* Mobile Menu Icon */}
+      {/* Mobile/Tablet Fullscreen Menu (Off-Canvas Menu) 
+        - இது MD (Tablet) ஸ்கிரீன்ல கூட தெரியணும், அதனால md:hidden-ஐ அப்படியே வச்சிருக்கேன் (Mobile/Tablet ரெண்டுக்கும் பொதுவா).
+      */}
       <div
-        className="md:hidden text-2xl z-50"
-        onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <HiX /> : <HiMenu />}
-      </div>
-
-      {/* Mobile Fullscreen Menu */}
-      <div
-        className={`fixed top-0 left-0 w-full h-full bg-white flex flex-col items-center justify-center gap-8 text-lg font-semibold text-blue-900 transform transition-transform duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 w-full h-screen bg-white flex flex-col items-center justify-center gap-8 text-xl font-bold text-blue-900 transform transition-transform duration-500 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
-        } md:hidden z-40`}>
+        } lg:hidden z-40`}
+      >
+        {" "}
+        {/* இங்க md:hidden-க்கு பதில் lg:hidden ஆக்கிருக்கேன் */}
         {navLinks.map(({ name, path, action }) =>
           action ? (
             <button
               key={name}
-              onClick={() => {
-                action();
-                setIsOpen(false);
-              }}
-              className="hover:text-blue-600">
+              onClick={() => handleLinkClick(action)}
+              className="hover:text-blue-600 text-2xl"
+            >
               {name}
             </button>
           ) : (
             <NavLink
               to={path}
               key={name}
-              onClick={() => setIsOpen(false)}
-              className="hover:text-blue-600">
+              onClick={() => handleLinkClick()}
+              className={({ isActive }) =>
+                `hover:text-blue-600 text-2xl ${
+                  isActive ? "text-blue-600" : ""
+                }`
+              }
+            >
               {name}
             </NavLink>
           )
         )}
-        <button className="bg-blue-900 text-white px-6 py-3 rounded-full flex items-center gap-2">
-          <IoCall size={20} className="text-white" />
-          9941201227
-        </button>
+        {/* Mobile Call Button (Menu-வுக்கு உள்ள) */}
+        <a href="tel:9384676002">
+          <button className="bg-blue-900 text-white px-6 py-3 rounded-lg flex items-center gap-2 mt-4 hover:bg-blue-700 transition duration-300">
+            <IoCall size={20} className="text-white" />
+            9384676002
+          </button>
+        </a>
       </div>
     </nav>
   );
