@@ -6,6 +6,7 @@ import Service from "./components/services/Service";
 import AllDoctors from "./components/AllDoctors";
 import AboutPage from "./components/AboutUs/AboutPage";
 import Footer from "./components/Footer";
+import Gallery from "./components/Gallery";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/service" element={<Service />} />
         <Route path="/alldoctors" element={<AllDoctors />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
       <Footer />
     </>
