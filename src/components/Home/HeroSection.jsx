@@ -5,6 +5,7 @@ import About from "../AboutUs/About";
 import { useLocation } from "react-router-dom";
 
 import { FaHeartbeat, FaHospitalSymbol, FaHandsHelping } from "react-icons/fa";
+import Doctors from "./Doctors";
 
 const fullText = (
   <>
@@ -253,6 +254,10 @@ const HeroSection = () => {
 
       <div id="about">
         <About />
+      </div>
+
+      <div>
+        <Doctors />
       </div>
 
       <div>
