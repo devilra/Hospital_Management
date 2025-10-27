@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 
 import { FaHeartbeat, FaHospitalSymbol, FaHandsHelping } from "react-icons/fa";
 import Doctors from "./Doctors";
+import HospitalServices from "./HospitalServices";
 
 const fullText = (
   <>
@@ -191,6 +192,10 @@ const HeroSection = () => {
 
       {/* {About Page} */}
 
+      <div id="about">
+        <About />
+      </div>
+
       <div className="">
         <section className="relative w-full py-16 md:py-24 overflow-hidden bg-gray-50">
           {/* Absolute Decorative Elements (Stylish lookக்காக) */}
@@ -252,15 +257,15 @@ const HeroSection = () => {
         </section>
       </div>
 
-      <div id="about">
-        <About />
-      </div>
-
       <div>
         <Doctors />
       </div>
 
       <div>
+        <HospitalServices />
+      </div>
+
+      {/* <div>
         <div className="py-10 px-4 md:px-10 bg-white">
           <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
             Our Core Services
@@ -291,7 +296,7 @@ const HeroSection = () => {
             ))}
           </Slider>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

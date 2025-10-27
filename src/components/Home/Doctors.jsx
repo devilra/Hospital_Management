@@ -1,5 +1,6 @@
 import React from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 const doctorsData = [
@@ -131,7 +132,7 @@ const Doctors = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true, // Tablets/Mobile-ல் Dots காட்டலாம்
+          //dots: true, // Tablets/Mobile-ல் Dots காட்டலாம்
         },
       },
       {
@@ -139,8 +140,8 @@ const Doctors = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          dots: true,
-          arrows: false, // மொபைலில் அம்புக்குறி (arrows) தேவையில்லை
+          //dots: true,
+          arrows: false,
         },
       },
       {
@@ -148,8 +149,8 @@ const Doctors = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: true,
-          arrows: false, // மொபைலில் அம்புக்குறி (arrows) தேவையில்லை
+          //dots: true,
+          arrows: false,
         },
       },
     ],
@@ -173,7 +174,7 @@ const Doctors = () => {
                         className="object-contain object-bottom h-full w-full"
                       />
                     </div>
-                    <div className="p-4 flex-1 flex flex-col justify-between">
+                    <div className="px-10 py-5 flex-1 flex flex-col justify-between">
                       <div>
                         <h3 className="text-xl font-bold text-blue-800 mb-1 truncate">
                           {doctor.name}
@@ -193,6 +194,14 @@ const Doctors = () => {
               ))}
             </Slider>
           </div>
+        </div>
+        <div className="text-center mt-5 lg:mt-7">
+          <Link
+            to="/alldoctors"
+            className="text-blue-800 font-semibold text-lg border-b-2 border-blue-500 hover:border-b-4 hover:text-blue-600 transition-all  duration-300 ease-in-out"
+          >
+            View More
+          </Link>
         </div>
       </section>
     </div>

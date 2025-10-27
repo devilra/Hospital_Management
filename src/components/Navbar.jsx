@@ -34,8 +34,9 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/service" },
-    { name: "About Us", action: handleAboutClick },
+    { name: "About Us", path: "/about", action: handleAboutClick },
     { name: "Contact Us", path: "/contact" },
+    { name: "Gallery", path: "/gallery" },
   ];
 
   // Mobile/Tablet Menu-வில் Link-ஐ க்ளிக் செய்தால் Menu-வை மூடுவதற்கு ஒரு Helper Function
@@ -58,31 +59,21 @@ const Navbar = () => {
 
       {/* Desktop Links: இது இப்போ LG ஸ்கிரீன்ல (1024px) மட்டும் தான் தெரியும் */}
       <ul className="hidden lg:flex justify-between items-center gap-8 text-sm font-semibold text-blue-900">
-        {navLinks.map(({ name, path, action }) =>
-          action ? (
-            <button
-              key={name}
-              onClick={action}
-              className="lg:text-lg cursor-pointer px-2 py-2 border-b-4 transition duration-500 text-blue-600 font-bold border-transparent hover:border-blue-600 bg-transparent"
-            >
-              {name}
-            </button>
-          ) : (
-            <NavLink
-              to={path}
-              key={name}
-              className={({ isActive }) =>
-                `lg:text-lg cursor-pointer px-2 py-2 border-b-4 transition duration-500 ${
-                  isActive
-                    ? "text-blue-600 font-bold border-blue-600"
-                    : "text-blue-600 font-bold border-transparent hover:border-blue-600"
-                }`
-              }
-            >
-              {name}
-            </NavLink>
-          )
-        )}
+        {navLinks.map(({ name, path, action }) => (
+          <NavLink
+            to={path}
+            key={name}
+            className={({ isActive }) =>
+              `lg:text-lg cursor-pointer px-2 py-2 border-b-4 transition duration-500 ${
+                isActive
+                  ? "text-blue-600 font-bold border-blue-600"
+                  : "text-blue-600 font-bold border-transparent hover:border-blue-600"
+              }`
+            }
+          >
+            {name}
+          </NavLink>
+        ))}
       </ul>
 
       {/* Right Side: Call Button (LG Only) & Menu Icon (MD and below) */}
