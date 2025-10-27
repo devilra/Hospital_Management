@@ -50,7 +50,7 @@ const About = () => {
               <img
                 src="/chairman.png"
                 alt="Doctor"
-                className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-xl"
+                className="w-full h-32 sm:h-40 md:h-48 object-cover object-[30%_40%] rounded-xl"
               />
               <div className="p-3 sm:p-4 text-center">
                 <p className="font-semibold text-sm sm:text-base">
