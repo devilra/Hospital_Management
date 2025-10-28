@@ -111,10 +111,10 @@ const HeroSection = () => {
   }, [location]);
 
   return (
-    <div className="pt-24">
-      <div className="hidden md:block">
+    <div className="pt-20 md:pt-24">
+      <div className="">
         <section
-          className="relative  px-4 md:px-20 h-[800px] md:h-[500px] py-10 flex flex-col md:flex-row items-center justify-end gap-10 bg-cover bg-center bg-no-repeat"
+          className="relative  px-4 md:px-20 h-[400px] md:h-[500px] py-10 flex flex-col md:flex-row items-center justify-end gap-10 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('/banner2.webp')",
           }}
@@ -162,7 +162,7 @@ const HeroSection = () => {
           </div>
         </section>
       </div>
-      <div className="md:hidden ">
+      {/* <div className="md:hidden ">
         <div className="slider-container overflow-hidden">
           <Slider {...settings}>
             <div className="">
@@ -188,7 +188,7 @@ const HeroSection = () => {
             </div>
           </Slider>
         </div>
-      </div>
+      </div> */}
 
       {/* {About Page} */}
 

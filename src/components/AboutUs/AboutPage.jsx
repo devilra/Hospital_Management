@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 
 export default function AboutPage() {
   const stats = [
@@ -9,66 +10,113 @@ export default function AboutPage() {
     { label: "Departments", value: "18" },
   ];
 
-  const team = [
+  const doctorsData = [
     {
       id: 1,
       name: "Dr.A.Saravanan MBBS, M.D, (PAED)",
-      //specialization:
-      //"Orthopedic Surgeon, Sports Injury Specialist, Joint Replacement Specialist.",
+      specialization:
+        "Orthopedic Surgeon, Sports Injury Specialist, Joint Replacement Specialist.",
       role: "Chief Consultant and Head of Orthopedics",
-      img: "/doctors/d7.png",
+      image: "/doctors/d7.png",
     },
     {
       id: 2,
       name: "Dr. R. Kavitha Karthikeyan M.D(OG), DNB(OG)",
-      //specialization: "Senior Obstetrician & Gynecologist",
+      specialization: "Senior Obstetrician & Gynecologist",
       role: "Senior Obstetrician & Gynecologist / Consultant",
-      img: "/doctors/d2.png",
+      image: "/doctors/d2.png",
     },
     {
       id: 3,
       name: "Dr. D. Aishwarya MBBS., M.D., (PAED)",
-      //specialization: "Senior Pediatrician",
+      specialization: "Senior Pediatrician",
       role: "Senior Pediatrician / Consultant",
-      img: "/doctors/d6.png",
+      image: "/doctors/d6.png",
     },
     {
       id: 4,
       name: "Dr. S. Suresh Kanna M.D. Internal Medicine, FACP, FDM., CCIID.,",
-      //specialization:
-      // "Specialist Physician & Diabetologist (10 Years Experience)",
+      specialization:
+        "Specialist Physician & Diabetologist (10 Years Experience)",
       role: "Specialist Physician & Diabetologist / Consultant",
-      img: "/doctors/d5.png",
+      image: "/doctors/d5.png",
     },
     {
       id: 5,
       name: "Dr. Akshya Raj M.S. (Ortho), CIO New Delhi, F.ASSI (Spine Surgery)",
-      //specialization: "Spine, Joint Replacement and Trauma Specialist",
+      specialization: "Spine, Joint Replacement and Trauma Specialist",
       role: "Spine, Joint Replacement and Trauma Specialist / Consultant",
-      img: "/doctors/d8.png",
+      image: "/doctors/d7.png",
     },
     {
       id: 6,
       name: "Dr. R. Nivethidha MBBS., M.S. (OG)",
-      //specialization: "Obstetrician & Gynecologist",
+      specialization: "Obstetrician & Gynecologist",
       role: "Obstetrician & Gynecologist / Consultant",
-      img: "/doctors/d3.png",
+      image: "/doctors/d3.png",
     },
     {
       id: 7,
       name: "Dr. E. Adhavan M.B.B.S., M.S(ENT)",
-      //specialization: "ENT Specialist (Ear, Nose, Throat)",
+      specialization: "ENT Specialist (Ear, Nose, Throat)",
       role: "ENT Specialist / Consultant",
-      img: "/doctors/d8.png",
+      image: "/doctors/d8.png",
     },
     {
       id: 8,
       name: "Dr. Sujatha Munian M.Sc",
-      //specialization: "Food nutrition and Dietetics",
+      specialization: "Food nutrition and Dietetics",
       role: "Dietitian and Nutritionist / Consultant",
-      img: "/doctors/d1.png",
+      image: "/doctors/d1.png",
     },
   ];
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1280, // For large screens (e.g., small desktops, large tablets)
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024, // For medium screens (e.g., tablets)
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          //dots: true, // Tablets/Mobile-ல் Dots காட்டலாம்
+        },
+      },
+      {
+        breakpoint: 768, // For small screens (e.g., larger phones)
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          //dots: true,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 480, // For extra small screens (e.g., small phones)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          //dots: true,
+          arrows: false,
+        },
+      },
+    ],
+  };
 
   // const team = [
   //   {
@@ -97,7 +145,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-800">
+    <main className="min-h-screen pt-20 md:pt-24 bg-gray-50 text-gray-800">
       {/* HERO */}
       <section className="bg-gradient-to-r from-sky-600 to-indigo-600 text-white py-16">
         <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
@@ -212,43 +260,37 @@ export default function AboutPage() {
           personalised care.
         </p>
 
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {team.map((t) => (
-            <article
-              key={t.name}
-              className="bg-white rounded-xl shadow overflow-hidden"
-            >
-              <div className="ml-10">
-                <img
-                  src={t.img}
-                  alt={t.name}
-                  className="w-full h-52 object-contain object-[20%_20%]"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold">{t.name}</h3>
-                <p className="text-sm text-gray-500">{t.role}</p>
-                <p className="mt-3 text-sm text-gray-600">{`Specialist in patient-centred care with years of experience in clinical practice and research.`}</p>
-                <div className="mt-4 flex gap-3">
-                  {/* <a
-                    aria-label={`Email ${t.name}`}
-                    href={`mailto:info@hospital.example`}
-                    className="text-sm font-medium underline"
-                  >
-                    Email
-                  </a>
-                  <a
-                    aria-label={`Profile ${t.name}`}
-                    href="#"
-                    className="text-sm font-medium underline"
-                  >
-                    Profile
-                  </a> */}
+        <div className="relative max-w-6xl mx-auto mt-5">
+          <Slider {...settings}>
+            {doctorsData.map((doctor) => (
+              <div key={doctor.id} className="px-2 py-5">
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-blue-100 flex flex-col h-full transform hover:scale-105 transition duration-300">
+                  <div className="h-60 bg-blue-50/20 flex items-end justify-center">
+                    <img
+                      src={doctor.image}
+                      alt={doctor.name}
+                      className="object-contain object-bottom h-full w-full"
+                    />
+                  </div>
+                  <div className="px-10 py-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold text-blue-800 mb-1 truncate">
+                        {doctor.name}
+                      </h3>
+                      <p className="text-sm text-gray-700 mb-2 truncate">
+                        {doctor.specialization}
+                      </p>
+                      {doctor.role && (
+                        <p className="text-xs font-semibold text-gray-600 truncate italic">
+                          {doctor.role}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </article>
-          ))}
+            ))}
+          </Slider>
         </div>
       </section>
 

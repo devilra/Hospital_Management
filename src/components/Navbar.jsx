@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     // Fixed Navbar
-    <nav className="fixed top-0 w-full flex items-center justify-between px-4 md:px-10 lg:px-20 py-2 bg-white shadow z-50">
+    <nav className="fixed top-0 w-full flex items-center  justify-between px-4 md:px-10 lg:px-20 py-2 bg-white shadow z-50">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Link to="/" onClick={() => setIsOpen(false)}>
@@ -94,40 +94,24 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile/Tablet Fullscreen Menu (Off-Canvas Menu) 
-        - இது MD (Tablet) ஸ்கிரீன்ல கூட தெரியணும், அதனால md:hidden-ஐ அப்படியே வச்சிருக்கேன் (Mobile/Tablet ரெண்டுக்கும் பொதுவா).
-      */}
       <div
         className={`fixed top-0 left-0 w-full h-screen bg-white flex flex-col items-center justify-center gap-8 text-xl font-bold text-blue-900 transform transition-transform duration-500 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } lg:hidden z-40`}
       >
         {" "}
-        {/* இங்க md:hidden-க்கு பதில் lg:hidden ஆக்கிருக்கேன் */}
-        {navLinks.map(({ name, path, action }) =>
-          action ? (
-            <button
-              key={name}
-              onClick={() => handleLinkClick(action)}
-              className="hover:text-blue-600 text-2xl"
-            >
-              {name}
-            </button>
-          ) : (
-            <NavLink
-              to={path}
-              key={name}
-              onClick={() => handleLinkClick()}
-              className={({ isActive }) =>
-                `hover:text-blue-600 text-2xl ${
-                  isActive ? "text-blue-600" : ""
-                }`
-              }
-            >
-              {name}
-            </NavLink>
-          )
-        )}
+        {navLinks.map(({ name, path, action }) => (
+          <NavLink
+            to={path}
+            key={name}
+            onClick={() => handleLinkClick()}
+            className={({ isActive }) =>
+              `hover:text-blue-600 text-2xl ${isActive ? "text-blue-600" : ""}`
+            }
+          >
+            {name}
+          </NavLink>
+        ))}
         {/* Mobile Call Button (Menu-வுக்கு உள்ள) */}
         <a href="tel:9384676002">
           <button className="bg-blue-900 text-white px-6 py-3 rounded-lg flex items-center gap-2 mt-4 hover:bg-blue-700 transition duration-300">
