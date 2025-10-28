@@ -28,19 +28,22 @@ const Footer = () => {
             <a
               href="#"
               className="bg-blue-900 p-2 rounded-full hover:bg-blue-700"
-              aria-label="Facebook">
+              aria-label="Facebook"
+            >
               <FaFacebookF />
             </a>
             <a
               href="#"
               className="bg-pink-600 p-2 rounded-full hover:bg-pink-500"
-              aria-label="Instagram">
+              aria-label="Instagram"
+            >
               <FaInstagram />
             </a>
             <a
               href="#"
               className="bg-red-600 p-2 rounded-full hover:bg-red-500"
-              aria-label="YouTube">
+              aria-label="YouTube"
+            >
               <FaYoutube />
             </a>
           </div>
@@ -50,10 +53,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-4">Services</h3>
           <ul className="space-y-2 text-sm">
-            <li>CT-SCAN</li>
+            {/* <li>CT-SCAN</li>
             <li>X-RAY</li>
             <li>ULTRASOUND SCAN</li>
-            <li>LAB TEST’S</li>
+            <li>LAB TEST’S</li> */}
           </ul>
         </div>
 

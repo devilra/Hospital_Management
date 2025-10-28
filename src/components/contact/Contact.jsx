@@ -107,7 +107,7 @@ export default function Contact() {
             <div className="mt-6">
               <iframe
                 title="RKP Multispeciality Hospital Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0188894598485!2d80.19082277510453!3d12.906224487393794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f4ad08c1f69%3A0x89b5b193a3a7b2cc!2sRKP%20Multispeciality%20Hospital%20and%20Diagnostics!5e0!3m2!1sen!2sin!4v1730100000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.509301802758!2d80.17949057393054!3d12.939228887373131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f780d39186f%3A0x7dfd7e6f9001a229!2sRKP%20MULTI-SPECIALITY%20HOSPITALS!5e0!3m2!1sen!2sin!4v1754458291985!5m2!1sen!2sin"
                 width="100%"
                 height="250"
                 allowFullScreen=""
