@@ -1,58 +1,309 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const AboutPage = () => {
+export default function AboutPage() {
+  const stats = [
+    { label: "Years of Service", value: "25+" },
+    { label: "Qualified Doctors", value: "120+" },
+    { label: "Happy Patients", value: "50k+" },
+    { label: "Departments", value: "18" },
+  ];
+
+  const team = [
+    {
+      id: 1,
+      name: "Dr.A.Saravanan MBBS, M.D, (PAED)",
+      //specialization:
+      //"Orthopedic Surgeon, Sports Injury Specialist, Joint Replacement Specialist.",
+      role: "Chief Consultant and Head of Orthopedics",
+      img: "/doctors/d7.png",
+    },
+    {
+      id: 2,
+      name: "Dr. R. Kavitha Karthikeyan M.D(OG), DNB(OG)",
+      //specialization: "Senior Obstetrician & Gynecologist",
+      role: "Senior Obstetrician & Gynecologist / Consultant",
+      img: "/doctors/d2.png",
+    },
+    {
+      id: 3,
+      name: "Dr. D. Aishwarya MBBS., M.D., (PAED)",
+      //specialization: "Senior Pediatrician",
+      role: "Senior Pediatrician / Consultant",
+      img: "/doctors/d6.png",
+    },
+    {
+      id: 4,
+      name: "Dr. S. Suresh Kanna M.D. Internal Medicine, FACP, FDM., CCIID.,",
+      //specialization:
+      // "Specialist Physician & Diabetologist (10 Years Experience)",
+      role: "Specialist Physician & Diabetologist / Consultant",
+      img: "/doctors/d5.png",
+    },
+    {
+      id: 5,
+      name: "Dr. Akshya Raj M.S. (Ortho), CIO New Delhi, F.ASSI (Spine Surgery)",
+      //specialization: "Spine, Joint Replacement and Trauma Specialist",
+      role: "Spine, Joint Replacement and Trauma Specialist / Consultant",
+      img: "/doctors/d8.png",
+    },
+    {
+      id: 6,
+      name: "Dr. R. Nivethidha MBBS., M.S. (OG)",
+      //specialization: "Obstetrician & Gynecologist",
+      role: "Obstetrician & Gynecologist / Consultant",
+      img: "/doctors/d3.png",
+    },
+    {
+      id: 7,
+      name: "Dr. E. Adhavan M.B.B.S., M.S(ENT)",
+      //specialization: "ENT Specialist (Ear, Nose, Throat)",
+      role: "ENT Specialist / Consultant",
+      img: "/doctors/d8.png",
+    },
+    {
+      id: 8,
+      name: "Dr. Sujatha Munian M.Sc",
+      //specialization: "Food nutrition and Dietetics",
+      role: "Dietitian and Nutritionist / Consultant",
+      img: "/doctors/d1.png",
+    },
+  ];
+
+  // const team = [
+  //   {
+  //     name: "Dr. Aishwarya R.",
+  //     role: "Chief Medical Officer",
+  //     img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcd",
+  //   },
+  //   {
+  //     name: "Dr. Karthik S.",
+  //     role: "Head - Cardiology",
+  //     img: "https://images.unsplash.com/photo-1551601651-2f9b6b4b6b7a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=efgh",
+  //   },
+  //   {
+  //     name: "Dr. Meera P.",
+  //     role: "Head - Pediatrics",
+  //     img: "https://images.unsplash.com/photo-1546539786-4b79c4e7e9f5?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ijkl",
+  //   },
+  // ];
+
+  const facilities = [
+    "24/7 Emergency",
+    "Modern Operation Theatres",
+    "In-house Diagnostics",
+    "Pharmacy",
+    "Intensive Care Unit (ICU)",
+  ];
+
   return (
-    <section className="py-16 md:pt-32 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* -------------------- 1. Image Section (Right Side) -------------------- */}
-          {/* பெரிய திரைகளில் வலது பக்கம், சிறிய திரைகளில் மேலே */}
-          <div className="w-full lg:w-1/2 order-first lg:order-last">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl h-80 md:h-96 lg:h-[500px]">
-              <img
-                // Screenshot 2025-10-27 173003.jpg-ல் உள்ள Image-ன் Placeholder-ஐ பயன்படுத்துகிறேன்
-                src="https://i.imgur.com/your-hospital-image.jpg" // <<< உங்கள் படத்தின் URL-ஐ இங்கே மாற்றவும்
-                alt="Hospital Interior showing Compassionate Care"
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                loading="lazy"
-              />
-              {/* Optional: படத்துக்கு மேல் ஒரு நீல நிற Overlay தேவைப்பட்டால் */}
-              <div className="absolute inset-0 bg-blue-900 opacity-20"></div>
+    <main className="min-h-screen bg-gray-50 text-gray-800">
+      {/* HERO */}
+      <section className="bg-gradient-to-r from-sky-600 to-indigo-600 text-white py-16">
+        <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
+          <div className="max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+              About Our Hospital
+            </h1>
+            <p className="mt-4 text-sky-100/90 text-lg sm:text-xl">
+              Caring hands, advanced treatments — your health is our priority.
+              We combine modern technology with compassionate care to deliver
+              the best outcomes for our patients.
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/contact"
+                className="inline-block rounded-md bg-white text-sky-700 px-6 py-3 font-semibold shadow hover:shadow-lg"
+              >
+                Contact Us
+              </Link>
+              <a
+                href="#departments"
+                className="inline-block rounded-md border border-white/30 px-6 py-3 text-white hover:bg-white/10"
+              >
+                Our Departments
+              </a>
             </div>
           </div>
-
-          {/* -------------------- 2. Text Section (Left Side) -------------------- */}
-          <div className="w-full lg:w-1/2 order-last lg:order-first">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-3">
-              ABOUT OUR HOSPITAL
-            </h3>
-
-            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-900 leading-tight mb-6">
-              Compassionate Care,{" "}
-              <span className="text-blue-600">Innovative Treatment</span> &
-              Faster Recovery
-            </h2>
-
-            <p className="text-gray-700 text-lg mb-6">
-              R K P Multispeciality Hospital is dedicated to providing
-              **High-Quality Medical Care** with a patient-first approach. We
-              combine **Modern Techniques** and experienced medical
-              professionals to ensure the **Faster Recovery** and well-being of
-              every patient.
-            </p>
-
-            <p className="text-gray-600 text-base mb-8 border-l-4 border-blue-500 pl-4 italic">
-              "Our mission is to be the most trusted healthcare partner in the
-              community, offering comprehensive medical services in Cardiology,
-              Paediatrics, Obstetrics, and Orthopedics."
-            </p>
-
-            {/* Call to Action Button */}
+          <div className="mt-8 lg:mt-0 lg:ml-8 flex-shrink-0">
+            <div className="w-full max-w-md rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1580281657521-796a5b3dc3b4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnop"
+                alt="Hospital caring staff"
+                className="w-full h-56 object-cover sm:h-64 lg:h-72"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </section>
 
-export default AboutPage;
+      {/* MISSION & VISION */}
+      <section className="container mx-auto px-6 py-12 grid gap-8 md:grid-cols-2 items-center">
+        <div>
+          <h2 className="text-2xl font-bold">Our Mission</h2>
+          <p className="mt-3 text-gray-600">
+            To provide accessible, high-quality healthcare where every patient
+            is treated with dignity, empathy and the latest evidence-based care.
+          </p>
+
+          <h2 className="mt-6 text-2xl font-bold">Our Vision</h2>
+          <p className="mt-3 text-gray-600">
+            To be the leading healthcare institution in the region known for
+            clinical excellence, continuous innovation and a patient-first
+            culture.
+          </p>
+
+          <div className="mt-6 grid grid-cols-2 gap-4">
+            {facilities.slice(0, 4).map((f, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <svg
+                  className="w-6 h-6 text-sky-600 mt-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4"
+                  ></path>
+                </svg>
+                <p className="text-gray-700">{f}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-white rounded-xl shadow p-6">
+          <h3 className="text-xl font-semibold">Why patients trust us</h3>
+          <ul className="mt-4 space-y-3 text-gray-600">
+            <li>Experienced multidisciplinary team</li>
+            <li>Advanced diagnostics & imaging</li>
+            <li>Transparent pricing & patient counselling</li>
+            <li>Post-operative rehabilitation programs</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="py-8 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="bg-sky-50 rounded-lg p-6 text-center"
+              >
+                <div className="text-3xl font-extrabold">{s.value}</div>
+                <div className="mt-2 text-gray-600">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="container mx-auto px-6 py-12" id="team">
+        <h2 className="text-2xl font-bold">Meet Our Team</h2>
+        <p className="mt-2 text-gray-600">
+          A highly experienced clinical team committed to delivering
+          personalised care.
+        </p>
+
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {team.map((t) => (
+            <article
+              key={t.name}
+              className="bg-white rounded-xl shadow overflow-hidden"
+            >
+              <div className="ml-10">
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  className="w-full h-52 object-contain object-[20%_20%]"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold">{t.name}</h3>
+                <p className="text-sm text-gray-500">{t.role}</p>
+                <p className="mt-3 text-sm text-gray-600">{`Specialist in patient-centred care with years of experience in clinical practice and research.`}</p>
+                <div className="mt-4 flex gap-3">
+                  {/* <a
+                    aria-label={`Email ${t.name}`}
+                    href={`mailto:info@hospital.example`}
+                    className="text-sm font-medium underline"
+                  >
+                    Email
+                  </a>
+                  <a
+                    aria-label={`Profile ${t.name}`}
+                    href="#"
+                    className="text-sm font-medium underline"
+                  >
+                    Profile
+                  </a> */}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS / CTA */}
+      <section className="bg-gradient-to-r from-slate-100 to-white py-12">
+        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 className="text-2xl font-bold">What our patients say</h3>
+            <blockquote className="mt-4 italic text-gray-700">
+              “The care I received was outstanding — the staff treated me like
+              family and the doctors explained everything with patience.” — S.
+              Kumar
+            </blockquote>
+          </div>
+          <div className="bg-white rounded-xl shadow p-6">
+            <h4 className="font-semibold">Book a consultation</h4>
+            <p className="mt-2 text-gray-600">
+              Call our appointment desk or use the online booking to choose your
+              preferred doctor and time.
+            </p>
+            <div className="mt-4 flex gap-3">
+              <a
+                href="#book"
+                className="inline-block rounded-md bg-sky-600 text-white px-5 py-2 font-semibold"
+              >
+                Book Now
+              </a>
+              <a
+                href="#contact"
+                className="inline-block rounded-md border border-sky-200 px-5 py-2"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER-LIKE CONTACT */}
+      <section className="container mx-auto px-6 py-10" id="contact">
+        <div className="bg-slate-50 rounded-xl p-6 sm:flex sm:items-center sm:justify-between">
+          <div>
+            <h5 className="font-semibold">Contact</h5>
+            {/* <p className="text-gray-600">
+              123 Health Ave, City, State — +91 98765 43210 —
+              info@hospital.example
+            </p> */}
+          </div>
+          <div className="mt-4 sm:mt-0">
+            <a href="/" className="inline-block rounded-md px-4 py-2 border">
+              Home
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
