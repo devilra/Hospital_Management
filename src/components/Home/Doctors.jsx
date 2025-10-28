@@ -39,7 +39,7 @@ const doctorsData = [
     name: "Dr. Akshya Raj M.S. (Ortho), CIO New Delhi, F.ASSI (Spine Surgery)",
     specialization: "Spine, Joint Replacement and Trauma Specialist",
     role: "Spine, Joint Replacement and Trauma Specialist / Consultant",
-    image: "/doctors/d7.png",
+    image: "/doctors/d4.png",
   },
   {
     id: 6,
