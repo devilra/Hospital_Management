@@ -176,7 +176,7 @@ export default function AboutPage() {
           <div className="mt-8 lg:mt-0 lg:ml-8 flex-shrink-0">
             <div className="w-full max-w-md rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1580281657521-796a5b3dc3b4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnop"
+                src="/chairman.png"
                 alt="Hospital caring staff"
                 className="w-full h-56 object-cover sm:h-64 lg:h-72"
                 loading="lazy"
