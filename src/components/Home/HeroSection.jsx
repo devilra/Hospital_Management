@@ -8,6 +8,7 @@ import Doctors from "./Doctors";
 import HospitalServices from "./HospitalServices";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API from "../../api";
 
 const fullText = (
   <>
@@ -114,12 +115,25 @@ const HeroSection = () => {
     }
   }, [location]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.phone.length !== 10 || !/^\d{10}$/.test(formData.phone)) {
       toast.error("Please enter a valid 10-digit phone number");
       return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await API.post("/form/submit", formData);
+      toast.success(res.data.message || "Form submitted successfully!");
+      setFormData({ name: "", phone: "", city: "" });
+    } catch (error) {
+      console.error(error.message);
+      toast.error("Something went wrong! Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -180,9 +194,14 @@ const HeroSection = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800"
+                disabled={loading}
+                className={`w-full  py-2 rounded text-white ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-700 hover:bg-blue-800"
+                }`}
               >
-                Submit
+                {loading ? "Submitting" : "Submit"}
               </button>
             </form>
 

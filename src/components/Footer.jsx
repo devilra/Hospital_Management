@@ -207,7 +207,7 @@ const Footer = () => {
               Terms of Use
             </a>
             <span className="text-gray-600">|</span>
-            <span className="text-gray-100">Developed by AmogoWebster</span>
+            <span className="text-gray-100">Developed by amigowebster</span>
           </div>
         </div>
       </div>
