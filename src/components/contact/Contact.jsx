@@ -1,8 +1,111 @@
-"use client";
-
-import React from "react";
+import React, { useState } from "react";
+import { Flip, toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import API from "../../api";
+import { LuBadgeCheck } from "react-icons/lu";
+import { GoAlertFill } from "react-icons/go";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // ✅ Empty field validation
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.message
+    ) {
+      toast.error("Please fill all fields", {
+        style: {
+          background: "linear-gradient(90deg, #ff7e5f 0%, #feb47b 100%)",
+          color: "black",
+          fontFamily: "monospace",
+        },
+      });
+      return;
+    }
+
+    // ✅ Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address", {
+        style: {
+          background: "linear-gradient(90deg, #ff9a9e 0%, #f6416c 100%)",
+          color: "black",
+          fontFamily: "monospace",
+        },
+      });
+      return;
+    }
+
+    // ✅ Mobile number validation (10 digits only)
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      toast.error("Please enter a valid 10-digit phone number", {
+        style: {
+          background: "linear-gradient(90deg, #ff9a9e 0%, #f6416c 100%)",
+          color: "black",
+          fontFamily: "monospace",
+        },
+      });
+      return;
+    }
+    setLoading(true);
+
+    try {
+      const res = await API.post("/form/contact", formData);
+      toast.success(res.data.message || "Form submitted successfully!", {
+        style: {
+          background: "linear-gradient(90deg, #a8e063 0%, #56ab2f 100%)",
+          color: "black",
+          fontFamily: "monospace",
+          fontSize: "14px",
+        },
+        icon: <LuBadgeCheck />,
+        // closeButton: (
+        //   <span style={{ color: "#0f5132", fontWeight: "bold" }}>
+        //     <RxCross2 />
+        //   </span>
+        // ),
+      });
+
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error(error.message);
+      toast.error("Something went wrong!", {
+        style: {
+          background: "linear-gradient(90deg, #ff9a9e 100%, #f6416c 100%)",
+          color: "Red",
+          fontFamily: "monospace",
+          fontSize: "14px",
+          borderRadius: "8px",
+          padding: "10px 16px",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        },
+        icon: <GoAlertFill color="red" />,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 pt-24 text-gray-800">
       {/* HERO SECTION */}
@@ -82,17 +185,18 @@ export default function Contact() {
           {/* RIGHT FORM */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-bold mb-4">Send a Message</h2>
-            <form className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="block font-medium mb-1" htmlFor="name">
                   Full Name *
                 </label>
                 <input
-                  id="name"
                   name="name"
                   type="text"
+                  placeholder="Full Name *"
                   required
-                  placeholder="Enter your full name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               </div>
@@ -102,11 +206,12 @@ export default function Contact() {
                   Email *
                 </label>
                 <input
-                  id="email"
                   name="email"
                   type="email"
+                  placeholder="Email *"
                   required
-                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               </div>
@@ -116,11 +221,13 @@ export default function Contact() {
                   Phone Number *
                 </label>
                 <input
-                  id="phone"
                   name="phone"
                   type="tel"
+                  placeholder="Phone Number *"
                   required
-                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  maxLength={10}
                   className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               </div>
@@ -130,20 +237,27 @@ export default function Contact() {
                   Message *
                 </label>
                 <textarea
-                  id="message"
                   name="message"
                   rows="4"
+                  placeholder="Your message *"
                   required
-                  placeholder="Write your message here"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-md transition-all"
+                disabled={loading}
+                className={`w-full font-semibold py-3 rounded-md transition-all 
+                  ${
+                    loading
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-sky-600 hover:bg-sky-700 text-white"
+                  }`}
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
@@ -215,6 +329,19 @@ export default function Contact() {
           </a>
         </div>
       </section>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Flip}
+      />
     </main>
   );
 }

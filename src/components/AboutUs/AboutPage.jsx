@@ -1,4 +1,5 @@
 import React from "react";
+import { FaAward, FaHandsHelping } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
@@ -283,7 +284,7 @@ export default function AboutPage() {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="container mx-auto px-6 py-12 grid gap-8 md:grid-cols-2 items-center">
+      {/* <section className="container mx-auto px-6 py-12 grid gap-8 md:grid-cols-2 items-center">
         <div>
           <h2 className="text-2xl font-bold">Our Mission</h2>
           <p className="mt-3 text-gray-600">
@@ -329,6 +330,32 @@ export default function AboutPage() {
             <li>Post-operative rehabilitation programs</li>
           </ul>
         </div>
+      </section> */}
+
+      <section className="bg-gradient-to-r from-blue-800 to-indigo-700 text-white py-20 text-center">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-extrabold mb-8">Our Mission & Vision</h2>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="p-8 bg-white/10 rounded-2xl backdrop-blur-md hover:bg-white/20 transition duration-300">
+              <FaHandsHelping className="text-5xl mx-auto mb-4 text-yellow-300" />
+              <h3 className="text-2xl font-semibold mb-2">Our Mission</h3>
+              <p className="text-lg text-blue-100 leading-relaxed">
+                To provide affordable, compassionate, and comprehensive
+                healthcare through innovation and dedication. We strive to heal
+                with empathy and care for every patient like family.
+              </p>
+            </div>
+
+            <div className="p-8 bg-white/10 rounded-2xl backdrop-blur-md hover:bg-white/20 transition duration-300">
+              <FaAward className="text-5xl mx-auto mb-4 text-green-300" />
+              <h3 className="text-2xl font-semibold mb-2">Our Vision</h3>
+              <p className="text-lg text-blue-100 leading-relaxed">
+                To be a globally trusted healthcare institution recognized for
+                excellence in clinical care, research, and patient well-being.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* STATS */}
@@ -350,8 +377,10 @@ export default function AboutPage() {
 
       {/* TEAM */}
       <section className="container mx-auto px-6 py-12" id="team">
-        <h2 className="text-2xl font-bold">Meet Our Team</h2>
-        <p className="mt-2 text-gray-600">
+        <h2 className="text-3xl font-extrabold text-[#004C97] text-center">
+          Meet Our Team
+        </h2>
+        <p className="mt-2 text-gray-600 text-lg  text-center">
           A highly experienced clinical team committed to delivering
           personalised care.
         </p>
