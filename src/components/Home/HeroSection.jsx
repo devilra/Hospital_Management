@@ -1,12 +1,13 @@
 // src/components/HomeSection.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import About from "../AboutUs/About";
 import { useLocation } from "react-router-dom";
-
 import { FaHeartbeat, FaHospitalSymbol, FaHandsHelping } from "react-icons/fa";
 import Doctors from "./Doctors";
 import HospitalServices from "./HospitalServices";
+import { Flip, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const fullText = (
   <>
@@ -96,6 +97,9 @@ const settings = {
 };
 
 const HeroSection = () => {
+  const [formData, setFormData] = useState({ name: "", phone: "", city: "" });
+  const [loading, setLoading] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -109,6 +113,15 @@ const HeroSection = () => {
       }, 100); // 100ms delay
     }
   }, [location]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (formData.phone.length !== 10 || !/^\d{10}$/.test(formData.phone)) {
+      toast.error("Please enter a valid 10-digit phone number");
+      return;
+    }
+  };
 
   return (
     <div className="pt-20 md:pt-24">
@@ -130,20 +143,39 @@ const HeroSection = () => {
               Book an appointment
             </p>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
                 placeholder="Name*"
+                name="name"
+                value={formData.name}
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="w-full border px-3 py-2 rounded"
               />
               <input
                 type="tel"
                 placeholder="Phone Number*"
+                name="phone"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
+                maxLength={10}
+                required
                 className="w-full border px-3 py-2 rounded"
               />
               <input
                 type="text"
                 placeholder="City*"
+                name="city"
+                value={formData.city}
+                onChange={(e) =>
+                  setFormData({ ...formData, city: e.target.value })
+                }
+                required
                 className="w-full border px-3 py-2 rounded"
               />
               <button
@@ -264,39 +296,19 @@ const HeroSection = () => {
       <div>
         <HospitalServices />
       </div>
-
-      {/* <div>
-        <div className="py-10 px-4 md:px-10 bg-white">
-          <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
-            Our Core Services
-          </h2>
-          <Slider {...Coresettings}>
-            {services.map((service, index) => (
-              <div key={index} className="px-3">
-                <div className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-lg transition-all duration-300">
-                  <img
-                    src={service.img}
-                    alt={service.title}
-                    className="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-105 "
-                  />
-                  <div className="p-5 text-center">
-                    <h3 className="text-lg font-semibold">{service.title}</h3>
-                    <p className="text-teal-600 font-bold mt-2">
-                      Starting from {service.price}
-                    </p>
-                    <p className="text-gray-600 text-sm mt-2">
-                      {service.description}
-                    </p>
-                    <button className="mt-4 bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition">
-                      Know More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div> */}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Flip}
+      />
     </div>
   );
 };

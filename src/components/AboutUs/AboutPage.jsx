@@ -480,14 +480,10 @@ export default function AboutPage() {
       </section>
 
       {/* FOOTER-LIKE CONTACT */}
-      <section className="container mx-auto px-6 py-10" id="contact">
+      {/* <section className="container mx-auto px-6 py-10" id="contact">
         <div className="bg-slate-50 rounded-xl p-6 sm:flex sm:items-center sm:justify-between">
           <div>
             <h5 className="font-semibold">Contact</h5>
-            {/* <p className="text-gray-600">
-              123 Health Ave, City, State — +91 98765 43210 —
-              info@hospital.example
-            </p> */}
           </div>
           <div className="mt-4 sm:mt-0">
             <Link to="/" className="inline-block rounded-md px-4 py-2 border">
@@ -495,7 +491,7 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
