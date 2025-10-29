@@ -236,7 +236,7 @@ export default function Services() {
       </section>
 
       {/* OUR MISSION & VISION SECTION */}
-      {/* <section className="bg-gradient-to-r from-blue-800 to-indigo-700 text-white py-20 text-center">
+      <section className="bg-gradient-to-r from-blue-800 to-indigo-700 text-white py-20 text-center">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-extrabold mb-8">Our Mission & Vision</h2>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10">
@@ -260,10 +260,10 @@ export default function Services() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* MEET OUR TEAM SECTION */}
-      {/* <section className="container mx-auto px-6 py-20 text-center">
+      <section className="container mx-auto px-6 py-20 text-center">
         <h2 className="text-4xl font-extrabold text-blue-800 mb-12">
           Meet Our <span className="text-blue-600">Medical Experts</span>
         </h2>
@@ -306,10 +306,10 @@ export default function Services() {
             </div>
           ))}
         </div>
-      </section> */}
+      </section>
 
       {/* TESTIMONIALS SECTION */}
-      {/* <section className="bg-blue-50 py-20 text-center">
+      <section className="bg-blue-50 py-20 text-center">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-extrabold text-blue-800 mb-12">
             What Our <span className="text-blue-600">Patients Say</span>
@@ -342,10 +342,10 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* BOOK APPOINTMENT CTA */}
-      {/* <section className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-16 text-center">
+      <section className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-16 text-center">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Ready to Experience Quality Healthcare?
@@ -360,7 +360,7 @@ export default function Services() {
             Book Appointment
           </a>
         </div>
-      </section> */}
+      </section>
     </main>
   );
 }
