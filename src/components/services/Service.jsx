@@ -235,33 +235,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* OUR MISSION & VISION SECTION */}
-      <section className="bg-gradient-to-r from-blue-800 to-indigo-700 text-white py-20 text-center">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-extrabold mb-8">Our Mission & Vision</h2>
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="p-8 bg-white/10 rounded-2xl backdrop-blur-md hover:bg-white/20 transition duration-300">
-              <FaHandsHelping className="text-5xl mx-auto mb-4 text-yellow-300" />
-              <h3 className="text-2xl font-semibold mb-2">Our Mission</h3>
-              <p className="text-lg text-blue-100 leading-relaxed">
-                To provide affordable, compassionate, and comprehensive
-                healthcare through innovation and dedication. We strive to heal
-                with empathy and care for every patient like family.
-              </p>
-            </div>
-
-            <div className="p-8 bg-white/10 rounded-2xl backdrop-blur-md hover:bg-white/20 transition duration-300">
-              <FaAward className="text-5xl mx-auto mb-4 text-green-300" />
-              <h3 className="text-2xl font-semibold mb-2">Our Vision</h3>
-              <p className="text-lg text-blue-100 leading-relaxed">
-                To be a globally trusted healthcare institution recognized for
-                excellence in clinical care, research, and patient well-being.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* MEET OUR TEAM SECTION */}
       <section className="container mx-auto px-6 py-20 text-center">
         <h2 className="text-4xl font-extrabold text-blue-800 mb-12">
