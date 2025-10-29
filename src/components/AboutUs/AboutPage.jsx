@@ -144,10 +144,14 @@ export default function AboutPage() {
     "Intensive Care Unit (ICU)",
   ];
 
+  const clipPathStyle = {
+    clipPath: "polygon(0 0, 95% 0, 100% 10%, 100% 100%, 0 100%)",
+  };
+
   return (
-    <main className="min-h-screen pt-20 md:pt-24 bg-gray-50 text-gray-800">
+    <main className="min-h-screen pt-10  bg-gray-50 text-gray-800">
       {/* HERO */}
-      <section className="bg-gradient-to-r from-sky-600 to-indigo-600 text-white py-16">
+      {/* <section className="bg-gradient-to-r from-sky-600 to-indigo-600 text-white py-16">
         <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
           <div className="max-w-2xl">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
@@ -181,6 +185,98 @@ export default function AboutPage() {
                 className="w-full h-56 object-cover sm:h-64 lg:h-72"
                 loading="lazy"
               />
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      <section className="font-sans bg-gradient-to-b from-white via-blue-50/40 to-white py-16 relative overflow-hidden">
+        {/* Decorative faint circles */}
+        <div className="absolute top-10 left-20 w-40 h-40 bg-blue-100/30 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-10 right-40 w-56 h-56 bg-indigo-100/40 rounded-full blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row shadow-xl rounded-3xl overflow-hidden bg-white relative z-10 border border-gray-100">
+          {/* LEFT SIDE - About Section inside shaped area */}
+          <div className="relative md:w-1/2 p-10 flex flex-col justify-between overflow-hidden">
+            {/* Decorative Shape */}
+            <div
+              className="absolute inset-0 bg-gradient-to-tr from-[#E6F0FF] via-[#F4F8FF] to-white"
+              style={{
+                clipPath: "polygon(0 0, 90% 0, 100% 100%, 10% 100%)",
+              }}
+            ></div>
+
+            {/* Content */}
+            <div className="relative z-10">
+              {/* About Hospital */}
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-[#004C97] mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-3/4 after:h-[3px] after:bg-[#004C97]/60 after:rounded-full">
+                  ABOUT OUR HOSPITAL
+                </h2>
+                <p className="text-base leading-relaxed text-gray-700">
+                  Established with the vision to provide compassionate and
+                  affordable medical care, our hospital stands as a center of
+                  excellence in healthcare. We combine modern technology with a
+                  patient-centric approach to ensure the best outcomes.
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="h-[2px] bg-gradient-to-r from-[#004C97]/40 via-blue-300/30 to-transparent w-2/3 mb-8"></div>
+
+              {/* Core Values */}
+              <div>
+                <h2 className="text-3xl font-bold text-[#004C97] mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-3/4 after:h-[3px] after:bg-[#004C97]/60 after:rounded-full">
+                  OUR CORE VALUES
+                </h2>
+                <ul className="list-disc pl-5 space-y-2 text-base leading-relaxed text-gray-700">
+                  <li>
+                    Compassion - treating every patient with care and dignity.
+                  </li>
+                  <li>
+                    Integrity - maintaining transparency and trust in all
+                    actions.
+                  </li>
+                  <li>
+                    Excellence - delivering high-quality healthcare with
+                    expertise.
+                  </li>
+                  <li>
+                    Innovation - embracing technology to improve patient
+                    outcomes.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Section Number */}
+            <p className="absolute bottom-6 left-10 text-5xl font-bold text-[#004C97]/10 tracking-wider select-none">
+              01
+            </p>
+          </div>
+
+          {/* RIGHT SIDE - Doctor Info */}
+          <div className="md:w-1/2 p-10 bg-white flex flex-col justify-center items-center md:items-start relative">
+            {/* Doctor Details */}
+            <div className="mb-6 text-center md:text-left">
+              <h1 className="text-3xl font-bold text-gray-800 mb-1 tracking-wide">
+                Dr. Saravanan Arunachalam
+              </h1>
+              <p className="text-lg text-gray-600">MD (Pediatrics)</p>
+              <p className="text-lg font-semibold text-gray-700">
+                Chairman & Managing Director
+              </p>
+            </div>
+
+            {/* Doctor Image */}
+            <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:scale-105 hover:shadow-2xl transition-transform duration-500 ease-out">
+              <img
+                src="/chairman.png"
+                alt="Dr. Saravanan Arunachalam"
+                className="w-full h-full object-cover object-[10%_65%]"
+              />
+              {/* Light overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent"></div>
             </div>
           </div>
         </div>
@@ -294,6 +390,60 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* OUR TEAM PHOTO SECTION */}
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#EAF3FF] via-white to-[#DCEBFF]">
+        {/* Background Pattern / Blur Light */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-[#004C97]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-blue-300/20 rounded-full blur-2xl"></div>
+          <div className="absolute top-1/3 left-1/4 w-[250px] h-[250px] bg-blue-200/30 rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-6 text-center">
+          {/* Section Title */}
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#004C97] mb-4 tracking-tight">
+            Our Dedicated Team
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">
+            United by compassion, guided by excellence - our doctors, nurses,
+            and staff work together to ensure every patient receives the best
+            care possible.
+          </p>
+
+          {/* Team Image Card */}
+          <div className="relative group mx-auto rounded-3xl overflow-hidden shadow-2xl border border-blue-100 max-w-5xl transform hover:scale-[1.02] transition-all duration-700 ease-out">
+            {/* TEAM IMAGE */}
+            <img
+              src="/rkp/r3.jpg"
+              alt="RKP Hospital Team"
+              className="w-full h-[450px] md:h-[600px] object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+            />
+
+            {/* Dual Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#004C97]/80 via-[#004C97]/30 to-transparent opacity-90"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#004C97]/40 via-transparent to-[#004C97]/20 mix-blend-overlay"></div>
+
+            {/* Decorative Lines */}
+            <div className="absolute inset-x-0 bottom-0 h-[4px] bg-gradient-to-r from-yellow-400 via-white to-blue-400"></div>
+
+            {/* Caption Overlay */}
+            <div className="absolute bottom-0 left-0 w-full text-white text-center pb-10 px-4 backdrop-blur-[2px]">
+              <h3 className="text-2xl md:text-3xl font-bold drop-shadow-md">
+                Team RKP - Strength in Unity
+              </h3>
+              <p className="text-sm md:text-base text-blue-100 mt-2 max-w-xl mx-auto leading-relaxed">
+                Celebrating our incredible doctors, nurses, and staff who make
+                healing possible every day.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Decorative Shapes */}
+        <div className="absolute top-10 right-16 w-16 h-16 bg-[#004C97]/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-10 left-20 w-12 h-12 bg-blue-400/20 rounded-full blur-md animate-bounce"></div>
+      </section>
+
       {/* TESTIMONIALS / CTA */}
       <section className="bg-gradient-to-r from-slate-100 to-white py-12">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
@@ -340,9 +490,9 @@ export default function AboutPage() {
             </p> */}
           </div>
           <div className="mt-4 sm:mt-0">
-            <a href="/" className="inline-block rounded-md px-4 py-2 border">
+            <Link to="/" className="inline-block rounded-md px-4 py-2 border">
               Home
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -62,7 +62,7 @@ const allServices = [...specialities.slice(0, 8), ...facilities.slice(0, 8)];
 const Footer = () => {
   // Map link-kku sariyana URL use panni irukken
   const mapUrl =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.899723555291!2d80.20785191482226!3d12.977465390848834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f0e9f3b589f%3A0x6d8f8d6d8f8d6d8f!2sRKP%20Multispeciality%20Hospital%20and%20Diagnostics!5e0!3m2!1sen!2sin!4v1633512345678!5m2!1sen!2sin";
+    "www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5092202812884!2d80.17949057431835!3d12.939234115588526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f780d39186f%3A0x7dfd7e6f9001a229!2sRKP%20MULTI-SPECIALITY%20HOSPITALS!5e0!3m2!1sen!2sin!4v1761717261418!5m2!1sen!2sin";
 
   // Total services list-a rendu column-a split panna
   const halfLength = Math.ceil(allServices.length / 2);
@@ -70,41 +70,38 @@ const Footer = () => {
   const col2 = allServices.slice(halfLength);
 
   return (
-    <footer className="bg-blue-900 text-gray-200">
+    <footer className="bg-white text-gray-800">
       {/* Main Footer Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* 1. Brand Info & Social */}
           <div className="space-y-6">
-            <img
-              src="/logo1.png"
-              alt="RKP Hospital"
-              className="h-16 filter brightness-0 invert"
-            />
+            <img src="/logo2b.png" alt="RKP Hospital" className="h-16 filter" />
             <p className="text-sm leading-relaxed">
-              **RKP Multispeciality Hospital** is a leading diagnostic and
-              imaging center committed to providing affordable, world-class
-              healthcare with compassion.
+              <strong>RKP Multispeciality Hospital</strong> is a leading
+              diagnostic and imaging center committed to providing affordable,
+              world-class healthcare with compassion.
             </p>
-            {/* Social Icons (Stylish Update) */}
+
+            {/* Social Icons */}
             <div className="flex gap-3 mt-4">
               <a
                 href="#"
-                className="w-9 h-9 flex items-center justify-center bg-blue-700 rounded-full hover:bg-pink-600 transition duration-300"
+                className="w-9 h-9 flex items-center text-white justify-center bg-blue-700 rounded-full hover:bg-pink-600 transition duration-300"
                 aria-label="Facebook"
               >
                 <FaFacebookF />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 flex items-center justify-center bg-blue-700 rounded-full hover:bg-pink-600 transition duration-300"
+                className="w-9 h-9 flex items-center text-white justify-center bg-blue-700 rounded-full hover:bg-pink-600 transition duration-300"
                 aria-label="Instagram"
               >
                 <FaInstagram />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 flex items-center justify-center bg-blue-700 rounded-full hover:bg-pink-600 transition duration-300"
+                className="w-9 h-9 flex items-center text-white justify-center bg-blue-700 rounded-full hover:bg-pink-600 transition duration-300"
                 aria-label="YouTube"
               >
                 <FaYoutube />
@@ -112,9 +109,9 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 2. Services List (Split into 2 Columns) */}
+          {/* 2. Services List */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white border-b-2 border-pink-500/50 pb-1 inline-block">
+            <h3 className="text-xl font-bold mb-6 text-neutral-800 border-b-2 border-pink-500/50 pb-1 inline-block">
               Our Services
             </h3>
             <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
@@ -131,42 +128,67 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 3. Contact Info */}
+          {/* 3. Contact Info (Both Branches) */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white border-b-2 border-pink-500/50 pb-1 inline-block">
+            <h3 className="text-xl font-bold mb-6 text-neutral-800 border-b-2 border-pink-500/50 pb-1 inline-block">
               Contact & Location
             </h3>
-            <ul className="space-y-4 text-sm">
-              <li className="flex items-start gap-3">
-                <FaMapMarkerAlt className="mt-1 text-pink-500 flex-shrink-0 text-lg" />
-                <span>
-                  RKP Multispeciality Hospital and Diagnostics
-                  <br />
-                  5, Medavakkam Main Rd, Nanmangalam, Chennai, TN 600129
-                </span>
+            <ul className="space-y-5 text-sm">
+              {/* Branch 1 */}
+              <li>
+                <p className="font-semibold text-[#004C97] mb-1">
+                  Main Branch – Nanmangalam
+                </p>
+                <div className="flex items-start gap-3">
+                  <FaMapMarkerAlt className="mt-1 text-pink-500 flex-shrink-0 text-lg" />
+                  <span>
+                    RKP Multispeciality Hospital and Diagnostics <br />
+                    5, Medavakkam Main Rd, Nanmangalam, Chennai, TN 600129
+                  </span>
+                </div>
               </li>
-              <li className="flex items-center gap-3 hover:text-pink-400 transition">
+
+              {/* Divider */}
+              <li className="border-t border-gray-200 pt-4"></li>
+
+              {/* Branch 2 */}
+              <li>
+                <p className="font-semibold text-[#004C97] mb-1">
+                  Branch 2 – Guduvancheri
+                </p>
+                <div className="flex items-start gap-3">
+                  <FaMapMarkerAlt className="mt-1 text-pink-500 flex-shrink-0 text-lg" />
+                  <span>
+                    GST Road, National Highway 4, Guduvancheri, Tamil Nadu
+                    603202 <br />
+                    Landmark: Near RKP Hospital Guduvanchery
+                  </span>
+                </div>
+              </li>
+
+              {/* Phone */}
+              <li className="flex items-center gap-3 hover:text-pink-400 transition mt-4">
                 <FaPhoneAlt className="text-pink-500" />
                 <a href="tel:+919384676002">+91 93846 76002</a>
               </li>
             </ul>
           </div>
 
-          {/* 4. Embedded Google Map */}
-          <div>
-            <h3 className="text-xl font-bold mb-6 text-white border-b-2 border-pink-500/50 pb-1 inline-block">
+          {/* 4. Google Map */}
+          {/* <div>
+            <h3 className="text-xl font-bold mb-6 text-neutral-800 border-b-2 border-pink-500/50 pb-1 inline-block">
               Find Us
             </h3>
             <iframe
               title="location"
-              src={mapUrl}
+              src="www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5092202812884!2d80.17949057431835!3d12.939234115588526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f780d39186f%3A0x7dfd7e6f9001a229!2sRKP%20MULTI-SPECIALITY%20HOSPITALS!5e0!3m2!1sen!2sin!4v1761717261418!5m2!1sen!2sin"
               width="100%"
               height="200"
               allowFullScreen=""
               loading="lazy"
               className="rounded-xl border-4 border-blue-700 shadow-xl"
             />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -174,8 +196,7 @@ const Footer = () => {
       <div className="bg-blue-800 py-4 text-xs">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-400">
           <p className="mb-2 md:mb-0">
-            Copyright © 2025 **RKP Multispeciality Hospital**. All Rights
-            Reserved.
+            Copyright © 2025 RKP Multispeciality Hospital. All Rights Reserved.
           </p>
           <div className="space-x-4">
             <a href="#" className="hover:text-pink-400 transition">
@@ -186,7 +207,7 @@ const Footer = () => {
               Terms of Use
             </a>
             <span className="text-gray-600">|</span>
-            <span className="text-gray-500">Developed by AmogoWebster</span>
+            <span className="text-gray-100">Developed by AmogoWebster</span>
           </div>
         </div>
       </div>
