@@ -185,7 +185,10 @@ export default function Contact() {
           {/* RIGHT FORM */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-bold mb-4">Send a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form
+              //onSubmit={handleSubmit}
+              className="space-y-5"
+            >
               <div>
                 <label className="block font-medium mb-1" htmlFor="name">
                   Full Name *

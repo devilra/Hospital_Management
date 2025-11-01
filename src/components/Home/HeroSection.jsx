@@ -204,7 +204,10 @@ const HeroSection = () => {
               Book an appointment
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              //onSubmit={handleSubmit}
+              className="space-y-4"
+            >
               <input
                 type="text"
                 placeholder="Name*"
