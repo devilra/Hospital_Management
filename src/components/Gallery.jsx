@@ -68,6 +68,48 @@ const galleryData = [
     src: "/gallery/g3.jpg",
     icon: FaHospital,
   },
+  {
+    id: 9,
+    title: "Hospital Reception",
+    category: "Hospital Photos",
+    src: "/gallery/g10.jpg",
+    icon: FaHospital,
+  },
+  {
+    id: 10,
+    title: "Patients Treatment place",
+    category: "Hospital Photos",
+    src: "/gallery/g9.jpg",
+    icon: FaHospital,
+  },
+  {
+    id: 11,
+    //title: "Modern Operation Theatre",
+    category: "Facilities & Equipment",
+    icon: FaMicroscope,
+    src: "/gallery/g11.jpg",
+  },
+  {
+    id: 12,
+    //title: "Modern Operation Theatre",
+    category: "Facilities & Equipment",
+    icon: FaMicroscope,
+    src: "/gallery/g12.jpg",
+  },
+  {
+    id: 13,
+    //title: "Modern Operation Theatre",
+    category: "Facilities & Equipment",
+    icon: FaMicroscope,
+    src: "/gallery/g13.jpg",
+  },
+  {
+    id: 14,
+    //title: "Modern Operation Theatre",
+    category: "Facilities & Equipment",
+    icon: FaMicroscope,
+    src: "/gallery/g14.jpg",
+  },
 ];
 
 const GalleryItem = ({ title, category, icon: Icon, src, size }) => (

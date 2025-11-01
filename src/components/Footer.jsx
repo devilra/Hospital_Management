@@ -70,7 +70,7 @@ const Footer = () => {
   const col2 = allServices.slice(halfLength);
 
   return (
-    <footer className="bg-white text-gray-800">
+    <footer className="bg-slate-50 text-gray-800 ">
       {/* Main Footer Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">

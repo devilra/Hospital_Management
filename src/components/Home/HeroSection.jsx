@@ -9,7 +9,15 @@ import HospitalServices from "./HospitalServices";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import API from "../../api";
+import { LuBadgeCheck } from "react-icons/lu";
+import { GoAlertFill } from "react-icons/go";
 
+import Select from "react-select";
+import { City } from "country-state-city";
+
+//const cities = City.getCitiesOfCountry("IN");
+
+//console.log(cities);
 const fullText = (
   <>
     <p className="text-gray-700 leading-relaxed mb-4">
@@ -100,6 +108,11 @@ const settings = {
 const HeroSection = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", city: "" });
   const [loading, setLoading] = useState(false);
+  const [cityOptions, setCityOptions] = useState([]);
+
+  console.log(formData);
+
+  //console.log(cityOptions);
 
   const location = useLocation();
 
@@ -115,6 +128,16 @@ const HeroSection = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    const allCities = City.getCitiesOfCountry("IN");
+    const formattedCities = allCities.map((city) => ({
+      value: city.name,
+      label: city.name,
+    }));
+
+    setCityOptions(formattedCities);
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -127,11 +150,35 @@ const HeroSection = () => {
 
     try {
       const res = await API.post("/form/submit", formData);
-      toast.success(res.data.message || "Form submitted successfully!");
+      toast.success(res.data.message || "Form submitted successfully!", {
+        style: {
+          background: "linear-gradient(90deg, #a8e063 0%, #56ab2f 100%)",
+          color: "black",
+          fontFamily: "monospace",
+          fontSize: "14px",
+        },
+        icon: <LuBadgeCheck />,
+        // closeButton: (
+        //   <span style={{ color: "#0f5132", fontWeight: "bold" }}>
+        //     <RxCross2 />
+        //   </span>
+        // ),
+      });
       setFormData({ name: "", phone: "", city: "" });
     } catch (error) {
       console.error(error.message);
-      toast.error("Something went wrong! Please try again.");
+      toast.error("Something went wrong!", {
+        style: {
+          background: "linear-gradient(90deg, #ff9a9e 100%, #f6416c 100%)",
+          color: "Red",
+          fontFamily: "monospace",
+          fontSize: "14px",
+          borderRadius: "8px",
+          padding: "10px 16px",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        },
+        icon: <GoAlertFill color="red" />,
+      });
     } finally {
       setLoading(false);
     }
@@ -181,7 +228,7 @@ const HeroSection = () => {
                 required
                 className="w-full border px-3 py-2 rounded"
               />
-              <input
+              {/* <input
                 type="text"
                 placeholder="City*"
                 name="city"
@@ -191,7 +238,39 @@ const HeroSection = () => {
                 }
                 required
                 className="w-full border px-3 py-2 rounded"
+              /> */}
+
+              <Select
+                options={cityOptions}
+                placeholder="Select City*"
+                name="city"
+                value={
+                  formData.city
+                    ? { value: formData.city, label: formData.city }
+                    : null
+                }
+                onChange={(selected) =>
+                  setFormData({ ...formData, city: selected?.value || "" })
+                }
+                isSearchable
+                isClearable
+                required
+                className="w-full"
+                styles={{
+                  control: (base) => ({
+                    ...base,
+                    borderColor: "#ccc",
+                    borderRadius: "6px",
+                    padding: "2px",
+                    fontSize: "14px",
+                  }),
+                  placeholder: (base) => ({
+                    ...base,
+                    color: "#666",
+                  }),
+                }}
               />
+
               <button
                 type="submit"
                 disabled={loading}
@@ -316,7 +395,7 @@ const HeroSection = () => {
         <HospitalServices />
       </div>
       <ToastContainer
-        position="bottom-right"
+        position="top-right"
         autoClose={5000}
         hideProgressBar
         newestOnTop={false}
