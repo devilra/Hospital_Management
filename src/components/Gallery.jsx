@@ -191,7 +191,15 @@ export default function Gallery() {
               key={item.id}
               {...item}
               size={
-                index % 7 === 0 ? "large" : index % 4 === 0 ? "wide" : "small"
+                index % 10 === 0
+                  ? "large" // every 10th image
+                  : index % 7 === 0
+                  ? "tall" // every 7th image
+                  : index % 5 === 0
+                  ? "wide" // every 5th image
+                  : index % 3 === 0
+                  ? "medium" // every 3rd image
+                  : "small" // all others
               }
             />
           ))}
